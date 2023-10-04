@@ -27,3 +27,7 @@ class Contact(models.Model):
     email = models.EmailField(max_length=254, blank=True)
     created_date = models.DateTimeField(default=timezone.now)  # pegar a data
     description = models.TextField(blank=True)
+
+    # Apresentar no admin o nome completo
+    def __str__(self) -> str:
+        return f'{self.first_name} {self.last_name}'
