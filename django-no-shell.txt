@@ -1,0 +1,12 @@
+No terminal para entrar no modo Django:
+python managa.py shell
+
+Para importar algo:
+from contact.models import Contact
+
+Para manipular os dados:
+c = Contact(first_name='Gustavo')
+c.save() #Somente dando save() é que ele envia para a base de dados.
+
+Para deletar:
+c.delete()
