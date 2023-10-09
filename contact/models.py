@@ -28,6 +28,7 @@ class Contact(models.Model):
     created_date = models.DateTimeField(default=timezone.now)  # pegar a data
     description = models.TextField(blank=True)
     show = models.BooleanField(default=True)
+    picture = models.ImageField(blank=True, upload_to='pictures/%Y/%m/')
 
     # Apresentar no admin o nome completo
     def __str__(self) -> str:
