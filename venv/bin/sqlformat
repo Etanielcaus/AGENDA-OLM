@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/home/etaniel/Área de Trabalho/desenvolvimento/AGENDA-OLM/venv/bin/python" "$0" "$@"
+'''exec' "/home/etaniel/Área de Trabalho/etaniel/venv/bin/python" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re
