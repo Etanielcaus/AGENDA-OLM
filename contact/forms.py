@@ -13,14 +13,14 @@ class ContactForm(forms.ModelForm):
         cleaned_data = self.cleaned_data
 
         self.add_error(
-            'first_name',
+            None,
             ValidationError(
                 'Mensagem de erro',
                 code='invalid'
             )
         )
         self.add_error(
-            'first_name',
+            None,
             ValidationError(
                 'Mensagem de erro 2',
                 code='invalid'

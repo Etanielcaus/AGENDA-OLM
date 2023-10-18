@@ -1,35 +1,48 @@
 {% extends 'global/base.html' %}
 {% block content %}
-  <div class="form-wrapper">
-    <h2>Contact</h2>
+<div class="form-wrapper">
+  <h2>Contact</h2>
 
-    <form 
-      action="{% url "contact:create" %}"
-      action="{% url 'contact:create' %}"
-      method="POST"
-      enctype="multipart/form-data"
-    >
-      {% csrf_token %}
+  <form action="{% url 'contact:create' %}" method="POST"
+    enctype="multipart/form-data">
+    {% csrf_token %}
 
+    <div class="form-content">
 
-
-      
-    
-      <div class="form-content">
-
-        {% for field in form  %} 
-        <div class="form-group">
-          <label for="{{field.id_for_label}}e">{{field.label}}</label>
-          {{field}}
-        </div>
-        {% endfor %}
+      {% for field in form %}
+      <!-- Loop que percorre os campos do formulário (variável 'form') -->
+      <div class="form-group">
+        <!-- Início de um bloco de elemento 'form-group' que contém um campo do formulário -->
+        <label for="{{field.id_for_label}}e">{{field.label}}</label>
+        <!-- Rótulo (label) para o campo do formulário, com um 'for' associado ao campo e o texto do rótulo -->
+        {{field}}
+        <!-- Exibe o campo do formulário em si -->
+        {{field.errors}}
+        <!-- Exibe quaisquer erros associados ao campo (por exemplo, erros de validação) -->
       </div>
+      <!-- Fim do bloco 'form-group' que contém um campo do formulário -->
+      {% endfor %}
+      <!-- Fim do loop que percorre os campos do formulário -->
 
+    </div>
+
+    {% if form.non_field_errors %}
       <div class="form-content">
-        <div class="form-group">
-          <button class="btn" type="submit">Send</button>
+          <div class="form-group"></div>
+              <div class="message error">
+                {{ form.non_field_errors }}
+              </div>
         </div>
       </div>
-    </form>
-  </div>
+    {% endif %}
+
+    <div class="form-content">
+      <div class="form-group">
+        <button class="btn" type="submit">Send</button>
+      </div>
+    </div>
+
+
+  </form>
+</div>
 {% endblock content %}
