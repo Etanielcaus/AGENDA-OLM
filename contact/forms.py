@@ -14,16 +14,6 @@ class ContactForm(forms.ModelForm):
         help_text='Texto de ajuda para usuário',
     )
 
-    qualquer = forms.CharField(
-        widget=forms.TextInput(
-            attrs={
-                'class': 'classe-a classe-b',
-                'placeholder': 'Escreva aqui'
-            }
-        ),
-        help_text='Texto de ajuda para usuário',
-    )
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -31,11 +21,12 @@ class ContactForm(forms.ModelForm):
         #     'class': 'classe-a classe-b',
         #     'placeholder': 'Escreva aqui'
         # })
-    
+
     class Meta:
         model = models.Contact
         fields = (
             'first_name', 'last_name', 'phone',
+            'email', 'description', 'category',
         )
         # widgets = {
         #     'first_name': forms.TextInput(
