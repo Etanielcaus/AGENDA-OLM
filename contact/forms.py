@@ -3,19 +3,27 @@ from django.core.exceptions import ValidationError
 from . import models
 
 class ContactForm(forms.ModelForm):
-    first_name = forms.CharField(
-        widget=forms.TextInput(
+    picture = forms.ImageField(
+        widget=forms.FileInput(
             attrs={
-                'class': 'classe-a classe-b',
-                'placeholder': 'Escreva aqui'
+                'accept': 'image/*',
             }
-        ),
-        label='Primeiro Nome',
-        help_text='Texto de ajuda para usuário',
+        )
     )
+    
+    # first_name = forms.CharField(
+    #     widget=forms.TextInput(
+    #         attrs={
+    #             'class': 'classe-a classe-b',
+    #             'placeholder': 'Escreva aqui'
+    #         }
+    #     ),
+    #     label='Primeiro Nome',
+    #     help_text='Texto de ajuda para usuário',
+    # )
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
 
         # self.fields['first_name'].widget.attrs.update({
         #     'class': 'classe-a classe-b',
@@ -27,6 +35,7 @@ class ContactForm(forms.ModelForm):
         fields = (
             'first_name', 'last_name', 'phone',
             'email', 'description', 'category',
+            'picture',
         )
         # widgets = {
         #     'first_name': forms.TextInput(
